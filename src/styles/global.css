@@ -52,9 +52,7 @@ html[data-theme="dark"] {
 }
 
 @utility max-w-app {
-  max-width: 52rem;
-  /* 介于 max-w-3xl (48rem/768px) 和 max-w-4xl (56rem/896px) 之间 */
-  /* 当前值: 52rem = 832px */
+  @apply max-w-3xl;
 }
 
 @utility app-layout {
