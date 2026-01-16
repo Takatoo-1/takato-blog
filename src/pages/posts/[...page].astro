@@ -10,19 +10,45 @@ import Pagination from "@/components/Pagination.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
 import { SITE } from "@/config";
 
+// 这是 Astro 的约定式 API（Convention-based API），这是 Astro 的静态站点生成机制，用于在构建时准备数据并传递给页面。
+// 框架会在构建时自动识别并调用 getStaticPaths，无需手动调用。
+// 开发环境下访问对应路由时会触发getStaticPaths
 export const getStaticPaths = (async ({ paginate }) => {
-  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  const posts = await getCollection(
+    "blog",
+    ({ data }) => !data.tags.includes("release")
+  );
   return paginate(getSortedPosts(posts), { pageSize: SITE.postPerPage });
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
+// getStaticPaths 是 Astro 的静态路径生成函数，用于：
+// -定义动态路由的所有可能路径
+// -为每个路径准备数据（通过 props）,getStaticPaths 返回的数据会传递到 Astro.props,
+// -在构建时生成所有静态页面
+// 内部相当于返回：
+// [
+//   {
+//     params: { page: "1" },
+//     props: { page: { data: [...], currentPage: 1, ... } }
+//   },
+//   {
+//     params: { page: "2" },
+//     props: { page: { data: [...], currentPage: 2, ... } }
+//   },
+//   ...
+// ]
 ---
 
 <Layout title={`文章 | ${SITE.title}`}>
   <Header />
   <Main pageTitle="文章" pageDesc="我发布的所有文章。">
     <ul>
-      {page.data.map(data => <Card {...data} />)}
+      {
+        page.data
+          .filter((item) => !item.data.tags.includes("release"))
+          .map((item) => <Card {...item} />)
+      }
     </ul>
   </Main>
 

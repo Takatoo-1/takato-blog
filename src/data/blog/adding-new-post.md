@@ -23,22 +23,22 @@ description: 使用 AstroPaper 主题创建或添加新文章的一些规则和�
   </figcaption>
 </figure>
 
-## Table of contents
+## 目录
 
-## Creating a Blog Post
+## 创建博客文章
 
-To write a new blog post, create a markdown file inside the `src/data/blog/` directory.
+要编写新的博客文章，请在 `src/data/blog/` 目录内创建一个 markdown 文件。
 
-> Prior to AstroPaper v5.1.0, all blog posts had to be in `src/data/blog/`, meaning you couldn't organize them into subdirectories.
+> 在 AstroPaper v5.1.0 之前，所有博客文章都必须在 `src/data/blog/` 中，这意味着您无法将它们组织到子目录中。
 
-Starting from AstroPaper v5.1.0, you can now organize blog posts into subdirectories, making it easier to manage your content.
+从 AstroPaper v5.1.0 开始，您现在可以将博客文章组织到子目录中，使内容管理更加容易。
 
-For example, if you want to group posts under `2025`, you can place them in `src/data/blog/2025/`. This also affects the post URL, so `src/data/blog/2025/example-post.md` will be available at `/posts/2025/example-post`.
+例如，如果您想将文章分组到 `2025` 下，可以将它们放在 `src/data/blog/2025/` 中。这也会影响文章 URL，因此 `src/data/blog/2025/example-post.md` 将在 `/posts/2025/example-post` 可用。
 
-If you don’t want subdirectories to affect the post URL, just prefix the folder name with an underscore `_`.
+如果您不希望子目录影响文章 URL，只需在文件夹名称前加下划线 `_`。
 
 ```bash
-# Example: blog post structure and URLs
+# 示例：博客文章结构和 URL
 src/data/blog/very-first-post.md          -> mysite.com/posts/very-first-post
 src/data/blog/2025/example-post.md        -> mysite.com/posts/2025/example-post
 src/data/blog/_2026/another-post.md       -> mysite.com/posts/another-post
@@ -46,15 +46,15 @@ src/data/blog/docs/_legacy/how-to.md      -> mysite.com/posts/docs/how-to
 src/data/blog/Example Dir/Dummy Post.md   -> mysite.com/posts/example-dir/dummy-post
 ```
 
-> 💡 Tip: You can override a blog post’s slug in the frontmatter as well. See the next section for more details.
+> 💡 提示：您也可以在 frontmatter 中覆盖博客文章的 slug。有关更多详细信息，请参阅下一节。
 
-If the subdirectory URL doesn’t appear in the build output, remove node_modules, reinstall packages, and then rebuild.
+如果子目录 URL 没有出现在构建输出中，请删除 node_modules，重新安装包，然后重新构建。
 
 ## Frontmatter
 
-Frontmatter is the main place to store some important information about the blog post (article). Frontmatter lies at the top of the article and is written in YAML format. Read more about frontmatter and its usage in [astro documentation](https://docs.astro.build/en/guides/markdown-content/).
+Frontmatter 是存储博客文章（文章）一些重要信息的主要位置。Frontmatter 位于文章顶部，以 YAML 格式编写。有关 frontmatter 及其用法的更多信息，请参阅 [astro 文档](https://docs.astro.build/en/guides/markdown-content/)。
 
-Here is the list of frontmatter property for each post.
+以下是每篇文章的 frontmatter 属性列表。
 
 | 属性               | 描述                                                                                         | 备注                                       |
 | ------------------ | -------------------------------------------------------------------------------------------- | ------------------------------------------ |
@@ -89,7 +89,7 @@ export const blogSchema = z.object({
   // ...
   draft: z.boolean().optional(),
   // [!code highlight:1]
-  tags: z.array(z.string()).default(["others"]), // replace "others" with whatever you want
+  tags: z.array(z.string()).default(["others"]), // 将 "others" 替换为您想要的任何内容
   // ...
 });
 ```
@@ -131,10 +131,10 @@ canonicalURL: https://example.org/my-article-was-already-posted-here
 # frontmatter
 ---
 
-Here are some recommendations, tips & ticks for creating new posts in AstroPaper blog theme.
+以下是在 AstroPaper 博客主题中创建新文章的一些规则/建议、提示和技巧。
 
 <!-- [!code ++] -->
-## Table of contents
+## 目录
 
 <!-- the rest of the post -->
 ```
@@ -168,7 +168,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
     shikiConfig: {
-      // For more themes, visit https://shiki.style/themes
+      // 更多主题，请访问 https://shiki.style/themes
       themes: { light: "min-light", dark: "night-owl" },
       defaultColor: false,
       wrap: false,

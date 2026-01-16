@@ -12,11 +12,16 @@ import { transformerFileName } from "./src/utils/transformers/fileName";
 import { SITE } from "./src/config";
 
 // https://astro.build/config
+// astro默认模式即为ssg（构建时预渲染所有页面），无需配置
+// 默认零 JavaScript ($0\text{ KB JS}$)：除非你明确要求，
+// 否则 Astro 在打包时会移除所有 JavaScript，只发送纯 HTML 到浏览器。这让它的加载速度极快。
+// 兴起原因：用于博客/文档/官网时，与Nextjs相比轻量，SEO和加载速度优秀
+
 export default defineConfig({
   site: SITE.website,
   integrations: [
     sitemap({
-      filter: page => SITE.showArchives || !page.endsWith("/archives"),
+      filter: (page) => SITE.showArchives || !page.endsWith("/archives"),
     }),
   ],
   markdown: {

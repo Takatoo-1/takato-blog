@@ -1,4 +1,7 @@
 ---
+// getCollection是astro内置api：astro:content库中的函数，用于获取博客文章集合
+// 可用于获取定义在content.config.ts中的collections集合中collection
+// getCollection参数：collection名称，过滤函数（可选）
 import { getCollection } from "astro:content";
 import Main from "@/layouts/Main.astro";
 import Layout from "@/layouts/Layout.astro";
@@ -36,7 +39,7 @@ const months = [
   <Main pageTitle="归档" pageDesc="我归档的所有文章。">
     {
       Object.entries(
-        getPostsByGroupCondition(posts, post =>
+        getPostsByGroupCondition(posts, (post) =>
           post.data.pubDatetime.getFullYear()
         )
       )
@@ -48,7 +51,7 @@ const months = [
             {Object.entries(
               getPostsByGroupCondition(
                 yearGroup,
-                post => post.data.pubDatetime.getMonth() + 1
+                (post) => post.data.pubDatetime.getMonth() + 1
               )
             )
               .sort(([monthA], [monthB]) => Number(monthB) - Number(monthA))
@@ -69,7 +72,7 @@ const months = [
                             new Date(a.data.pubDatetime).getTime() / 1000
                           )
                       )
-                      .map(data => (
+                      .map((data) => (
                         <Card {...data} />
                       ))}
                   </ul>

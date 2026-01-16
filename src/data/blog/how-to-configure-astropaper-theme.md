@@ -129,8 +129,8 @@ export const SITE = {
 
 如果您的 logo 是图片但不是 SVG，您可以使用 Astro 的 Image 组件。
 
-- Add your logo inside `src/assets` directory. (eg: `src/assets/dummy-logo.png`)
-- Import `Image` and your logo in `Header.astro`
+- 在 `src/assets` 目录内添加您的 logo。（例如：`src/assets/dummy-logo.png`）
+- 在 `Header.astro` 中导入 `Image` 和您的 logo
 
   ```astro file=src/components/Header.astro
   ---
@@ -140,7 +140,7 @@ export const SITE = {
   ---
   ```
 
-- Then, replace `{SITE.title}` with imported logo.
+- 然后，用导入的 logo 替换 `{SITE.title}`。
 
   <!-- prettier-ignore -->
   ```html
@@ -153,13 +153,13 @@ export const SITE = {
   </a>
   ```
 
-With this approach, you can still adjust your image's appearance using CSS classes. However, this might not always fit what you want. If you need to display different logo images based on light or dark mode, check how light/dark icons are handled inside the `Header.astro` component.
+使用这种方法，您仍然可以使用 CSS 类调整图片的外观。但是，这可能并不总是符合您的需求。如果您需要根据明暗模式显示不同的 logo 图片，请查看 `Header.astro` 组件内如何处理明暗图标。
 
-## Configuring social links
+## 配置社交链接
 
-![An arrow pointing at social link icons](https://github.com/user-attachments/assets/8b895400-d088-442f-881b-02d2443e00cf)
+![指向社交链接图标的箭头](https://github.com/user-attachments/assets/8b895400-d088-442f-881b-02d2443e00cf)
 
-You can configure social links in `SOCIALS` object inside `constants.ts`.
+您可以在 `constants.ts` 内的 `SOCIALS` 对象中配置社交链接。
 
 ```ts file=src/constants.ts
 export const SOCIALS = [
@@ -190,23 +190,23 @@ export const SOCIALS = [
 ] as const;
 ```
 
-## Configuring share links
+## 配置分享链接
 
-You can configure share links in `SHARE_LINKS` object inside `src/constants.ts`.
+您可以在 `src/constants.ts` 内的 `SHARE_LINKS` 对象中配置分享链接。
 
-![An arrow pointing at share link icons](https://github.com/user-attachments/assets/4f930b68-b625-45df-8c41-e076dd2b838e)
+![指向分享链接图标的箭头](https://github.com/user-attachments/assets/4f930b68-b625-45df-8c41-e076dd2b838e)
 
-## Configuring fonts
+## 配置字体
 
-AstroPaper uses Astro's [experimental fonts API](https://docs.astro.build/en/reference/experimental-flags/fonts/) with [Google Sans Code](https://fonts.google.com/specimen/Google+Sans+Code) as the default font. This provides consistent typography across all platforms with automatic font optimizations including preloading and caching.
+AstroPaper 使用 Astro 的[实验性字体 API](https://docs.astro.build/en/reference/experimental-flags/fonts/)，默认字体为 [Google Sans Code](https://fonts.google.com/specimen/Google+Sans+Code)。这提供了跨所有平台一致的排版，并具有自动字体优化，包括预加载和缓存。
 
-### Using the default font
+### 使用默认字体
 
-The font is automatically configured in `astro.config.ts` and loaded in `Layout.astro`. No additional configuration is needed to use the default Google Sans Code font.
+字体在 `astro.config.ts` 中自动配置，并在 `Layout.astro` 中加载。使用默认的 Google Sans Code 字体无需额外配置。
 
-### Customizing the font
+### 自定义字体
 
-To use a different font, you need to update three places:
+要使用不同的字体，您需要更新三个地方：
 
 1. **更新 `astro.config.ts` 中的字体配置：**
 

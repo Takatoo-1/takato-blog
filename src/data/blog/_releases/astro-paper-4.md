@@ -14,7 +14,7 @@ description: "AstroPaper v4：确保更流畅、功能更丰富的博客体验�
 
 ![AstroPaper v4](@/assets/images/AstroPaper-v4.png)
 
-## Table of contents
+## 目录
 
 ## Major Changes
 

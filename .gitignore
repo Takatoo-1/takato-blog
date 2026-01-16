@@ -1,1 +1,23 @@
+# 依赖
 node_modules
+
+# Astro 自动生成的目录（内容集合元数据、类型定义、构建缓存）
+.astro
+
+# 构建输出
+dist
+
+# 环境变量
+.env
+.env.local
+.env.*.local
+
+# 日志
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 操作系统文件
+.DS_Store

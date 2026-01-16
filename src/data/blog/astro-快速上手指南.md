@@ -14,7 +14,7 @@ description: 专为熟悉 React/Vue/Next/Nuxt 的开发者准备的 Astro 快速
 
 > 专为熟悉 React/Vue/Next/Nuxt 的开发者准备
 
-## Table of contents
+## 目录
 
 ## 一、Astro 核心概念（对比你熟悉的框架）
 
