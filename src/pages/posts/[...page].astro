@@ -14,11 +14,14 @@ import { SITE } from "@/config";
 // 框架会在构建时自动识别并调用 getStaticPaths，无需手动调用。
 // 开发环境下访问对应路由时会触发getStaticPaths
 export const getStaticPaths = (async ({ paginate }) => {
-  const posts = await getCollection(
-    "blog",
+  const posts = await getCollection("blog");
+  // getSortedPosts 会应用 postFilter（过滤草稿和未到发布时间的文章）
+  const sortedPosts = getSortedPosts(posts);
+  // 过滤掉 release 标签的文章
+  const filteredPosts = sortedPosts.filter(
     ({ data }) => !data.tags.includes("release")
   );
-  return paginate(getSortedPosts(posts), { pageSize: SITE.postPerPage });
+  return paginate(filteredPosts, { pageSize: SITE.postPerPage });
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
@@ -44,11 +47,7 @@ const { page } = Astro.props;
   <Header />
   <Main pageTitle="文章" pageDesc="我发布的所有文章。">
     <ul>
-      {
-        page.data
-          .filter((item) => !item.data.tags.includes("release"))
-          .map((item) => <Card {...item} />)
-      }
+      {page.data.map((item) => <Card {...item} />)}
     </ul>
   </Main>
 
