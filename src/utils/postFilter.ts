@@ -5,7 +5,7 @@ const postFilter = ({ data }: CollectionEntry<"blog">) => {
   const isPublishTimePassed =
     Date.now() >
     new Date(data.pubDatetime).getTime() - SITE.scheduledPostMargin;
-  return true;
+  return !data.draft && isPublishTimePassed;
 };
 
 export default postFilter;
