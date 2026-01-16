@@ -15,7 +15,7 @@ import { SITE } from "@/config";
 // 开发环境下访问对应路由时会触发getStaticPaths
 export const getStaticPaths = (async ({ paginate }) => {
   const posts = await getCollection("blog");
-  // getSortedPosts 会应用 postFilter（过滤草稿和未到发布时间的文章）
+  // 线上构建时，getSortedPosts 会应用 postFilter（过滤草稿和未到发布时间的文章）
   const sortedPosts = getSortedPosts(posts);
   // 过滤掉 release 标签的文章
   const filteredPosts = sortedPosts.filter(

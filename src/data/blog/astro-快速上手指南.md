@@ -1,7 +1,7 @@
 ---
 title: Astro 快速上手指南
 author: Sat Naing
-pubDatetime: 2026-01-20T10:00:00Z
+pubDatetime: 2026-01-16T10:00:00Z
 slug: astro-quick-start-guide
 featured: true
 draft: false

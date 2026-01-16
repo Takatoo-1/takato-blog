@@ -2,17 +2,20 @@ import type { CollectionEntry } from "astro:content";
 import postFilter from "./postFilter";
 
 const getSortedPosts = (posts: CollectionEntry<"blog">[]) => {
-  return posts
-    .filter(postFilter)
-    .sort(
-      (a, b) =>
-        Math.floor(
-          new Date(b.data.modDatetime ?? b.data.pubDatetime).getTime() / 1000
-        ) -
-        Math.floor(
-          new Date(a.data.modDatetime ?? a.data.pubDatetime).getTime() / 1000
-        )
-    );
+  return (
+    posts
+      .filter(postFilter)
+      // 发布到线上构建时，postFilter 会过滤掉草稿和未到发布时间的文章
+      .sort(
+        (a, b) =>
+          Math.floor(
+            new Date(b.data.modDatetime ?? b.data.pubDatetime).getTime() / 1000
+          ) -
+          Math.floor(
+            new Date(a.data.modDatetime ?? a.data.pubDatetime).getTime() / 1000
+          )
+      )
+  );
 };
 
 export default getSortedPosts;
