@@ -7,6 +7,8 @@ import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
 import LinkButton from "./LinkButton.astro";
 import { SITE } from "@/config";
+import { Image } from "astro:assets";
+import logo from "@/assets/images/logo.png";
 
 const { pathname } = Astro.url;
 
@@ -15,8 +17,8 @@ const currentPath =
   pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname;
 
 const isActive = (path: string) => {
-  const currentPathArray = currentPath.split("/").filter(p => p.trim());
-  const pathArray = path.split("/").filter(p => p.trim());
+  const currentPathArray = currentPath.split("/").filter((p) => p.trim());
+  const pathArray = path.split("/").filter((p) => p.trim());
 
   return currentPath === path || currentPathArray[0] === pathArray[0];
 };
@@ -42,6 +44,8 @@ const isActive = (path: string) => {
       "flex items-baseline justify-between sm:items-center",
     ]}
   >
+    <!-- 标题 -->
+    <Image src={logo} alt={SITE.title} class="size-8 mr-3" />
     <a
       href="/"
       class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"

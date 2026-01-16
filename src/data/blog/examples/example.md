@@ -1,0 +1,64 @@
+---
+title: 示例博文模版 # 文章标题（作为页面的 h1，必需字段）
+author: 文章作者 # 作者名称（可选，默认使用 SITE.author）
+pubDatetime: 2026-01-16T00:00:00Z # 发布日期时间（ISO 8601 格式，必需字段）
+modDatetime: 2026-01-16T00:30:00Z # 修改日期时间（ISO 8601 格式，可选字段）
+slug: example # 注意⚠️ URL 唯一标识符（可选，默认使用文件名）
+featured: false # 是否在首页精选部分显示（可选，默认：false）
+draft: false # 是否为草稿（可选，默认：false）
+tags: # 文章标签数组（可选，默认：["others"]）
+  - docs
+  - 示例
+description: 这是一个展示 AstroPaper 博客文章格式的示例文件，包含所有必需的 frontmatter 字段和可选字段。 # 文章描述（用于 SEO 和摘要，必需字段）
+---
+
+> 这是一篇示例文章，展示了如何在 AstroPaper 博客中添加新文章。
+
+## 内容编写规则
+
+### 标题使用
+
+- 文章主标题使用 frontmatter 中的 `title` 字段
+- 文章内容中的标题从 h2（##）开始
+- 建议使用 h2 ~ h6，不要使用 h1
+
+### 目录添加
+
+要添加目录，在需要的位置添加：
+
+```markdown
+## 目录
+```
+
+### 代码块
+
+使用三个反引号包裹代码：
+
+```javascript
+const example = "这是代码示例";
+console.log(example);
+```
+
+### 图片引用
+
+#### 使用 assets 目录（推荐）
+
+```markdown
+![图片描述](@/assets/images/example.jpg)
+```
+
+#### 使用 public 目录
+
+```markdown
+![图片描述](/assets/images/example.jpg)
+```
+
+## 文件位置
+
+- 基础路径：`src/data/blog/`
+- 可以组织到子目录：`src/data/blog/2025/example.md`
+- 如果不想子目录影响 URL，文件夹名前加下划线：`src/data/blog/_drafts/example.md`
+
+## 总结
+
+遵循以上格式要求，您就可以在 AstroPaper 博客中成功添加新文章了！

@@ -26,26 +26,8 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
         你好
       </h1>
-      <a
-        target="_blank"
-        href="/rss.xml"
-        class="inline-block"
-        aria-label="rss feed"
-        title="RSS 订阅"
-      >
-        <IconRss
-          width={20}
-          height={20}
-          class="scale-125 stroke-accent stroke-3 rtl:-rotate-90"
-        />
-        <span class="sr-only">RSS 订阅</span>
-      </a>
 
-      <p>
-        该博客使用AstroPaper进行搭建，AstroPaper 是一个简洁、响应式且对 SEO
-        友好的 Astro
-        博客主题。该主题遵循最佳实践，开箱即用提供无障碍支持。默认支持明暗模式。此外，还可以配置其他颜色方案。
-      </p>
+      <p>发点想发的，有的没的…</p>
       {
         // only display if at least one social link is enabled
         SOCIALS.length > 0 && (

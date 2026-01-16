@@ -2,7 +2,7 @@ export const SITE = {
   website: "https://astro-paper.pages.dev/", // replace this with your deployed domain
   author: "Takato",
   profile: "https://",
-  desc: "一个简洁、响应式且对 SEO 友好的 Astro 博客主题。",
+  desc: "有的没的的博客",
   title: "TakatoBlog",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
@@ -13,7 +13,7 @@ export const SITE = {
   showBackButton: true, // show back button in post detail
   editPost: {
     enabled: true,
-    text: "编辑页面",
+    text: "编辑文章",
     url: "https://github.com/Takatoo-1/takato-blog/edit/main/",
   },
   dynamicOgImage: true,

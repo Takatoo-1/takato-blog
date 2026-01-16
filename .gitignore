@@ -7,6 +7,9 @@ node_modules
 # 构建输出
 dist
 
+# Pagefind 搜索索引（构建时自动生成）
+public/pagefind
+
 # 环境变量
 .env
 .env.local
